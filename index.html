@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaibhav Ghai | Technical Ghostwriter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="title-group">
+        <span class="eyebrow">Technical Ghostwriting</span>
+        <h1 class="site-title">Vaibhav Ghai</h1>
+      </div>
+      <div class="header-copy">
+        <p class="site-description">
+          I write LinkedIn posts for technical founders. 
+          <br>Posts built from your raw voice notes
+        </p>
+        <a href="mailto: vaibhavuchiha6@gmail.com" class="cta-button">Get a free sample post</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- How It Works Strip -->
+  <section class="how-it-works">
+    <div class="step">
+      <span class="step-num">01</span>
+      <h3>I Learn Your Voice</h3>
+      <p>I study your past posts, talks, and notes to build a voice guide before writing anything. Then, you send raw voice notes about your week.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">02</span>
+      <h3>I Draft It</h3>
+      <p>I translate your raw technical insights into punchy, highly readable posts.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">03</span>
+      <h3>Approve & Publish</h3>
+      <p>You review the doc, make tweaks, and post. Zero time wasted formatting.</p>
+    </div>
+  </section>
+
+  <!-- Portfolio Grid -->
+  <main class="portfolio-main">
+    <div class="section-header">
+      <h2>Illustrative Samples</h2>
+      <p>Click to view the raw-to-final transformation.</p>
+    </div>
+    
+    <div id="posts-grid" class="grid-container">
+      <!-- Cards injected by JS -->
+    </div>
+    
+    <p class="legal-footnote">* All samples are illustrative and written for fictional personas to protect client confidentiality.</p>
+  </main>
+
+  <!-- Footer with the "Moat" -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-about">
+        <h3>The Technical Advantage</h3>
+        <p>I'm a CS engineering student, so I build with code — I'm not just formatting text. When you describe an architecture decision, a failed deploy, or a migration, I follow the specifics. Then I write it so the technical detail survives and the point still lands for a non-engineer reader.</p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:vaibhavuchiha6@gmail.com" class="cta-button outline">Get a free sample post</a>
+        <a href="https://www.linkedin.com/in/vaibhav-ghai-b99438432" target="_blank" class="social-link">LinkedIn</a>
+        <a href="#" class="social-link">X (Twitter)</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <dialog id="post-modal" class="post-modal">
+    <div class="modal-content">
+      <header class="modal-header">
+        <div class="modal-tags">
+          <span id="modal-tag" class="tag"></span>
+          <span class="modal-subtitle">Illustrative Format Breakdown</span>
+        </div>
+        <button id="modal-close" class="close-btn" aria-label="Close modal">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </header>
+
+      <div class="modal-body">
+        <div class="modal-intro">
+          <h2 id="modal-title" class="modal-title"></h2>
+          <p id="modal-context" class="modal-context"></p>
+        </div>
+
+        <div class="comparison-grid">
+          <div class="panel before-panel">
+            <div class="panel-header">
+              <span class="indicator red"></span>
+              <h3>Raw Founder Notes</h3>
+            </div>
+            <p id="modal-before" class="panel-text"></p>
+          </div>
+          <div class="panel after-panel">
+            <div class="panel-header">
+              <span class="indicator green"></span>
+              <h3>Ghostwritten Asset (Final)</h3>
+            </div>
+            <div id="modal-after" class="panel-text"></div>
+          </div>
+        </div>
+
+        <div class="modal-strategy">
+          <h3>Editorial Strategy</h3>
+          <p id="modal-breakdown"></p>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>

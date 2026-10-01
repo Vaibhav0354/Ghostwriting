@@ -1,0 +1,576 @@
+/* =========================================
+   Variables & Reset
+   ========================================= */
+:root {
+  --bg-color: #000000;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa; /* zinc-400 */
+  --border-color: #27272a; /* zinc-800 */
+  --border-hover: #ffffff;
+  --card-bg: #09090b; /* zinc-950 */
+  --card-hover: #18181b; /* zinc-900 */
+  --panel-bg: #111111;
+  --radius-lg: 32px;
+  --radius-md: 16px;
+  --green: #10b981;
+  --red: #ef4444;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  padding: 2rem 1.5rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--text-primary);
+  color: var(--bg-color);
+}
+
+/* =========================================
+   Typography & Header
+   ========================================= */
+h1, h2, h3, .heading-font {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.site-header {
+  max-w-width: 1152px;
+  max-width: 1152px;
+  margin: 0 auto 4rem auto;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .header-container {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.site-title {
+  font-size: 2.5rem;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .site-title { font-size: 3rem; }
+}
+
+.site-description {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  max-width: 320px;
+}
+
+/* =========================================
+   Portfolio Grid & Cards (The Wireframe)
+   ========================================= */
+.portfolio-main {
+  max-width: 1152px;
+  margin: 0 auto;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid-container { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid-container { grid-template-columns: repeat(3, 1fr); }
+}
+
+.card {
+  background-color: var(--card-bg);
+  /* Thick borders and rounded corners to match your drawing */
+  border: 3px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  background-color: var(--card-hover);
+  transform: translateY(-4px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.card-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.card:hover .card-tag { color: var(--text-primary); }
+
+.card-action {
+  font-size: 0.75rem;
+  color: #52525b; /* zinc-600 */
+  font-family: monospace;
+}
+
+.card:hover .card-action { color: var(--text-secondary); }
+
+.card-hook {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.card-teaser {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* =========================================
+   Modal (Dialog) Styles
+   ========================================= */
+.post-modal {
+  margin: auto;
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  max-width: 900px;
+  width: 90%;
+  max-height: 90vh;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.post-modal::backdrop {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 90vh;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(24, 24, 27, 0.5);
+}
+
+.modal-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tag {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid #3f3f46;
+  background: #27272a;
+  font-weight: 500;
+}
+
+.modal-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  color: var(--text-primary);
+  background: var(--border-color);
+}
+
+.modal-body {
+  padding: 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-context {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* =========================================
+   Comparison Grid (Before & After)
+   ========================================= */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .comparison-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.panel {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.before-panel {
+  background-color: rgba(24, 24, 27, 0.3);
+}
+
+.after-panel {
+  background-color: rgba(24, 24, 27, 0.8);
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.indicator.red { background-color: var(--red); }
+.indicator.green { background-color: var(--green); }
+
+.panel-header h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.after-panel .panel-header h3 { color: var(--green); }
+
+.panel-text {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  white-space: pre-line;
+  background-color: rgba(0,0,0,0.5);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(39, 39, 42, 0.5);
+  flex-grow: 1;
+}
+
+.before-panel .panel-text {
+  font-family: monospace;
+  color: var(--text-secondary);
+}
+
+.after-panel .panel-text {
+  color: #e4e4e7;
+}
+
+/* =========================================
+   Strategy Section
+   ========================================= */
+.modal-strategy {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+}
+
+.modal-strategy h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.modal-strategy p {
+  font-size: 0.875rem;
+  color: #d4d4d8;
+  background: rgba(39, 39, 42, 0.4);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(39, 39, 42, 0.6);
+}
+/* =========================================
+   Image Container (For the LinkedIn Screenshots)
+   ========================================= */
+.post-image-container {
+  width: 100%;
+  height: 140px;
+  background-color: #111111; /* Dark placeholder background */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover .post-image-container {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* When you add the actual <img> tag inside the container, this will format it */
+.post-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top; /* Keeps the top of the LinkedIn post visible */
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.card:hover .post-image-container img {
+  opacity: 1;
+}
+
+/* Adjusted the new hook text to sit properly at the bottom */
+.card-hook {
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-primary);
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.25rem;
+  margin-top: auto;
+}
+/* =========================================
+   Updated Contrast & Typography Fixes
+   ========================================= */
+:root {
+  --text-secondary: #c4c4c8; /* Lighter gray for better readability */
+}
+
+/* =========================================
+   Buttons & CTAs
+   ========================================= */
+.cta-button {
+  display: inline-block;
+  background-color: var(--text-primary);
+  color: var(--bg-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: opacity 0.2s;
+  margin-top: 1rem;
+}
+
+.cta-button:hover {
+  opacity: 0.9;
+}
+
+.cta-button.outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.cta-button.outline:hover {
+  background-color: var(--card-bg);
+}
+
+.header-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* =========================================
+   How It Works Strip
+   ========================================= */
+.how-it-works {
+  max-width: 1152px;
+  margin: 0 auto 4rem auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+@media (min-width: 768px) {
+  .how-it-works {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.step-num {
+  font-family: monospace;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.step h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.step p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* =========================================
+   Grid Header & Footer
+   ========================================= */
+.section-header {
+  margin-bottom: 2rem;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.section-header p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.legal-footnote {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: #71717a;
+  text-align: center;
+}
+
+.site-footer {
+  max-width: 1152px;
+  margin: 4rem auto 0 auto;
+  padding-top: 4rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.footer-about {
+  max-width: 500px;
+}
+
+.footer-about h3 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  color: var(--green);
+}
+
+.footer-about p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.social-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s;
+}
+
+.social-link:hover {
+  color: var(--text-primary);
+}
+
+/* Ensure Modal stacks cleanly on Mobile */
+@media (max-width: 767px) {
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
